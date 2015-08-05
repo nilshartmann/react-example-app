@@ -1,0 +1,8 @@
+node_modules/
+client/libs/bower/
+_dist/
+dist/
+mongodb-data/
+my-notes.txt
+npm-debug.log
+
