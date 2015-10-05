@@ -1,8 +1,25 @@
 import React from 'react';
 
+function RestrictionList({value, restrictions}) {
+  return <div>
+    {restrictions.map((r) => <RestrictionLabel key={r.id}
+                                               label={r.label}
+                                               succeeded={value && r.validate(value)}/>
+    )}
+  </div>;
+}
+RestrictionList.propTypes = {
+  value:        React.PropTypes.string,
+  restrictions: React.PropTypes.array.isRequired
+};
+
 function RestrictionLabel({label, succeeded}) {
   return <div className={succeeded?'validation-succeeded':'validation-failed'}>{label}</div>;
 }
+RestrictionLabel.propTypes = {
+  label:     React.PropTypes.string.isRequired,
+  succeeded: React.PropTypes.bool
+};
 
 export default class RestrictedInputField extends React.Component {
   static propTypes = {
@@ -22,19 +39,12 @@ export default class RestrictedInputField extends React.Component {
 
   onInputChange(e) {
     const currentValue = e.target.value;
-    const validations = {};
-    let inputValid = true;
+    const { restrictions } = this.props;
 
-    this.props.restrictions.forEach((r) => {
-      validations[r.id] = r.validate(currentValue);
-      if (!validations[r.id]) {
-        inputValid = false;
-      }
-    });
+    const inputValid = !restrictions.some((r)=>!r.validate(currentValue));
 
     this.setState({
-      currentValue,
-      validations
+      currentValue
     });
 
     this.props.onInputChange({
@@ -44,7 +54,7 @@ export default class RestrictedInputField extends React.Component {
   }
 
   render() {
-    const { validations, currentValue } = this.state;
+    const { currentValue } = this.state;
     const { restrictions } = this.props;
     return <div>
       <input autoFocus='true'
@@ -52,7 +62,7 @@ export default class RestrictedInputField extends React.Component {
              value={currentValue}
              onChange={this.onInputChange}
              placeholder='Password'/>
-      {restrictions.map((r) => <RestrictionLabel key={r.id} label={r.label} succeeded={validations[r.id] === true}/>)}
+      <RestrictionList value={currentValue} restrictions={restrictions}/>
     </div>;
   }
 
