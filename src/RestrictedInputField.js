@@ -1,5 +1,9 @@
 import React from 'react';
 
+function RestrictionLabel({label, succeeded}) {
+  return <div className={succeeded?'validation-succeeded':'validation-failed'}>{label}</div>;
+}
+
 export default class RestrictedInputField extends React.Component {
   static propTypes = {
     restrictions:  React.PropTypes.array.isRequired,
@@ -40,17 +44,15 @@ export default class RestrictedInputField extends React.Component {
   }
 
   render() {
+    const { validations, currentValue } = this.state;
+    const { restrictions } = this.props;
     return <div>
       <input autoFocus='true'
              type='password'
-             value={this.state.currentValue}
+             value={currentValue}
              onChange={this.onInputChange}
              placeholder='Password'/>
-
-      {this.props.restrictions.map((r) => {
-        const classes = (this.state.validations[r.id] === true) ? 'validation-succeeded' : 'validation-failed';
-        return <div className={classes} key={r.id}>{r.label}</div>;
-      })}
+      {restrictions.map((r) => <RestrictionLabel key={r.id} label={r.label} succeeded={validations[r.id] === true}/>)}
     </div>;
   }
 
