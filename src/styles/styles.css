@@ -1,11 +1,27 @@
-html {
+/**
+ * CSS Styles for Password field example
+ *
+ * NOTE: This file doesn't represent CSS best practices ;-). Instead these styles are 'optimized' for the concrete example
+ * only with the goal that inside the example code no or not too many 'layout divs' are needed.
+*/
+
+html,
+button {
 	font-family: 'Roboto', sans-serif;
 	font-size: 18px;
 	font-weight: normal;
 	line-height: 1.5;
 	color: #CFD8DC;
+}
 
+html {
 	background-color: #CFD8DC;
+}
+
+button,
+button:focus {
+	border: 0;
+	outline: 0;
 }
 
 input {
@@ -50,7 +66,7 @@ h1 {
 	text-align: right;
 }
 
-.Button {
+button {
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 	background-color: #4CAF50;
 	padding: 0 12px;
@@ -66,11 +82,11 @@ h1 {
 	user-select: none; /* Likely future */
 }
 
-.Button.disabled {
+button.disabled {
 	background-color: #B6B6B6;
 }
 
-.Button:hover:not(.disabled) {
+button:hover:not(.disabled) {
 	cursor: pointer;
 	background-color: #43A047;
 	transition: box-shadow .25s;
@@ -104,6 +120,10 @@ h1 {
 	margin-right: 8px;
 	content: "";
 	background-size: 100%;
+}
+
+.CheckLabelList {
+	margin-bottom: 15px;
 }
 
 .Message {

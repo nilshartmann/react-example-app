@@ -1,50 +1,53 @@
 import React from 'react';
-import RestrictedInputField from './RestrictedInputField';
-import * as Restrictions from '../model/Restrictions';
-
-const restrictions = [
-  Restrictions.AtLeastEightCharacters,
-  Restrictions.UppercaseLetters,
-  Restrictions.LowercaseLetters,
-  Restrictions.Numbers,
-  Restrictions.Punctuation
-];
+import {CheckLabelList, Button} from './CoreComponents';
 
 export default class PasswordForm extends React.Component {
-  constructor() {
-    super();
-    this.onPasswordInputChange = this.onPasswordInputChange.bind(this);
-    this.onSetPassword = this.onSetPassword.bind(this);
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
-  onPasswordInputChange(input) {
-    const newState = {
-      value: input.valid ? input.value : null
-    };
+  checkPassword(password) {
+    const { restrictions } = this.props;
 
-    this.setState(newState);
+    // check each restriction
+    const checks = restrictions.map((r) => ({
+      label:   r.label,
+      checked: !!password && r.validate(password)
+    }));
+
+    return checks;
+  }
+
+  onPasswordInputChange(input) {
+    this.setState({password: input});
   }
 
   onSetPassword() {
-    this.setState({message: 'Your highly secret password has been set to: ' + this.state.value});
+    const { password } = this.state;
+    this.setState({message: `Your highly secret password has been set to: ${password}`});
   }
 
   render() {
-    const isValidPassword = this.state.value ? true : false;
-    const buttonClasses = isValidPassword ? 'Button' : 'Button disabled';
-    const message = this.state.message ? <div className='Message'>{this.state.message}</div> : null;
+    const { password, message } = this.state;
+    const checks = this.checkPassword(password);
+    const isValidPassword = checks.every((check) => check.checked);
+    const messageLabel = message ? <div className='Message'>{message}</div> : null;
 
     return <div>
       <h1>Please choose a new password</h1>
-      <RestrictedInputField restrictions={restrictions} onInputChange={this.onPasswordInputChange}/>
-
-      <div className='ButtonBar'>
-        <div className={buttonClasses} onClick={isValidPassword ? this.onSetPassword : null}>
-          Set Password
-        </div>
-      </div>
-      {message}
+      <input autoFocus='true'
+             type='password'
+             value={password}
+             onChange={(event) => this.onPasswordInputChange(event.target.value)}
+             placeholder='Password'/>
+      <CheckLabelList checks={checks}/>
+      <Button label='Set Password' enabled={isValidPassword} onClickHandler={() => this.onSetPassword()} />
+      {messageLabel}
     </div>;
   }
 }
+
+PasswordForm.propTypes = {
+  restrictions: React.PropTypes.array.isRequired
+};
