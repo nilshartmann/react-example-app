@@ -51,7 +51,7 @@ export default class RestrictedInputField extends React.Component {
     // check each restriction
     const checks = restrictions.map((r) => ({
       label:   r.label,
-      checked: value !== undefined && r.validate(value)
+      checked: !!value && r.validate(value)
     }));
 
     return checks;
