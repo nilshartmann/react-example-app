@@ -77,27 +77,27 @@ h1 {
 	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
-.validation-failed,
-.validation-succeeded {
+.CheckLabel-unchecked,
+.CheckLabel-checked {
 	margin-left: 5px;
 }
 
-.validation-succeeded {
+.CheckLabel-checked {
 	font-weight: bold;
 	/* color: #4CAF50; */
 	color: #4CAF50;
 }
 
-.validation-failed::before {
+.CheckLabel-unchecked::before {
 	background: url("check_grey.png") no-repeat 0 0;
 }
 
-.validation-succeeded::before {
+.CheckLabel-checked::before {
 	background: url("check_green.png") no-repeat 0 0;
 }
 
-.validation-failed::before,
-.validation-succeeded::before {
+.CheckLabel-unchecked::before,
+.CheckLabel-checked::before {
 	display: inline-block;
 	width: 0.8em;
 	height: 0.8em;

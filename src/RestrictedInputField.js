@@ -1,69 +1,98 @@
 import React from 'react';
 
-function RestrictionList({value, restrictions}) {
+// ============================================================================================================
+// ===
+// === CheckLabel :: Shows a "Check" (label and green or red icon)
+// ===
+// ============================================================================================================
+function CheckLabel({label, checked}) {
+  return <div className={checked?'CheckLabel-checked':'CheckLabel-unchecked'}>{label}</div>;
+}
+CheckLabel.propTypes = {
+  label:   React.PropTypes.string.isRequired,
+  checked: React.PropTypes.bool.isRequired
+};
+
+// ============================================================================================================
+// ===
+// === CheckLabelList :: Renders a List of CheckLabels
+// ===
+// === param checks: Array containing objects with label and checked property
+// ============================================================================================================
+function CheckLabelList({checks}) {
   return <div>
-    {restrictions.map((r) => <RestrictionLabel key={r.id}
-                                               label={r.label}
-                                               succeeded={value && r.validate(value)}/>
+    {checks.map((c) => <CheckLabel key={c.label}
+                                   label={c.label}
+                                   checked={c.checked}/>
     )}
   </div>;
 }
-RestrictionList.propTypes = {
-  value:        React.PropTypes.string,
-  restrictions: React.PropTypes.array.isRequired
+CheckLabelList.propTypes = {
+  checks: React.PropTypes.array.isRequired
 };
 
-function RestrictionLabel({label, succeeded}) {
-  return <div className={succeeded?'validation-succeeded':'validation-failed'}>{label}</div>;
-}
-RestrictionLabel.propTypes = {
-  label:     React.PropTypes.string.isRequired,
-  succeeded: React.PropTypes.bool
-};
-
+// ============================================================================================================
+// ===
+// === RestrictedInputField :: A text input field that ensures user defined constraints
+// ===
+// ============================================================================================================
 export default class RestrictedInputField extends React.Component {
-  static propTypes = {
-    restrictions:  React.PropTypes.array.isRequired,
-    onInputChange: React.PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
 
-    this.onInputChange = this.onInputChange.bind(this);
-
     this.state = {
-      validations: {}
+      checks: this.checkValue()
     };
   }
 
-  onInputChange(e) {
-    const currentValue = e.target.value;
+  checkValue(value) {
     const { restrictions } = this.props;
 
-    const inputValid = !restrictions.some((r)=>!r.validate(currentValue));
+    // check each restriction
+    const checks = restrictions.map((r) => ({
+      label:   r.label,
+      checked: value !== undefined && r.validate(value)
+    }));
+
+    return checks;
+  }
+
+  onInputChange(newValue) {
+    const checks = this.checkValue(newValue);
+    const allChecksPassed = checks.every( (check) => check.checked);
 
     this.setState({
-      currentValue
+      currentValue: newValue,
+      checks:       checks
     });
 
     this.props.onInputChange({
-      valid: inputValid,
-      value: currentValue
+      valid: allChecksPassed,
+      value: newValue
     });
   }
 
   render() {
-    const { currentValue } = this.state;
-    const { restrictions } = this.props;
+    const { currentValue, checks } = this.state;
+    const { description } = this.props;
+
     return <div>
       <input autoFocus='true'
              type='password'
              value={currentValue}
-             onChange={this.onInputChange}
-             placeholder='Password'/>
-      <RestrictionList value={currentValue} restrictions={restrictions}/>
+             onChange={(e)=>this.onInputChange(e.target.value)}
+             placeholder={description} />
+      <CheckLabelList checks={checks}/>
     </div>;
   }
-
 }
+
+RestrictedInputField.propTypes = {
+  description: React.PropTypes.string,
+  restrictions:  React.PropTypes.array.isRequired,
+  onInputChange: React.PropTypes.func.isRequired
+};
+
+RestrictedInputField.defaultProps = {
+  description: 'Password'
+};
