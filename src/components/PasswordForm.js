@@ -1,6 +1,6 @@
 import React from 'react';
 import RestrictedInputField from './RestrictedInputField';
-import * as Restrictions from './Restrictions';
+import * as Restrictions from '../model/Restrictions';
 
 const restrictions = [
   Restrictions.AtLeastEightCharacters,
