@@ -56,16 +56,16 @@ export function ButtonBar({children}) {
 }
 // TODO: children proptypes
 
-export function ConfirmDialog({question, onYesHandler, onNoHandler}) {
-  return <div><h1>Please confirm</h1>{question}
+export function MessageDialog({title, message, buttonTitle, onOkHandler}) {
+  return <div><h1>{title}</h1>{message}
     <ButtonBar>
-      <Button label='Yes' onClickHandler={onYesHandler}/>
-      <Button label='No' onClickHandler={onNoHandler}/>
+      <Button label={buttonTitle} onClickHandler={onOkHandler}/>
     </ButtonBar>
   </div>;
 }
-ConfirmDialog.propTypes = {
-  question: React.PropTypes.string.isRequired,
-  onYesHandler: React.PropTypes.func.isRequired,
-  onNoHandler: React.PropTypes.func.isRequired
+MessageDialog.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  message: React.PropTypes.string.isRequired,
+  buttonTitle: React.PropTypes.string.isRequired,
+  onOkHandler: React.PropTypes.func.isRequired
 };

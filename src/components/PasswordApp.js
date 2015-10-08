@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 
 import React from 'react';
-import {ConfirmDialog} from './CoreComponents';
+import {MessageDialog} from './CoreComponents';
 import PasswordForm from './PasswordForm';
 
 import * as Restrictions from '../model/Restrictions';
@@ -30,9 +30,17 @@ export default class PasswordApp extends React.Component {
     const { password } = this.state;
 
     if (password) {
-      return <div><ConfirmDialog question={`Your password has been set to ${password}. Are you satisfied with that?`}  /></div>;
+      return <MessageDialog
+        title='Password set!'
+        message={`Your new password: ${password}`}
+        buttonTitle='Reset'
+        onOkHandler={()=>this.setPassword(null)}
+      />;
     } else {
-      return <PasswordForm restrictions={restrictions} onPasswordSet={ (newPassword) => this.setPassword(newPassword) } />;
+      return <PasswordForm
+        restrictions={restrictions}
+        onPasswordSet={ (newPassword) => this.setPassword(newPassword) }
+      />;
     }
   }
 }
