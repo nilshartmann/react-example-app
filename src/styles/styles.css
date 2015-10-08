@@ -66,6 +66,10 @@ h1 {
 	text-align: right;
 }
 
+.ButtonBar button {
+	margin-left: 10px;
+}
+
 button {
 	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
 	background-color: #4CAF50;
@@ -122,9 +126,9 @@ button:hover:not(.disabled) {
 	background-size: 100%;
 }
 
-.CheckLabelList {
-	margin-bottom: 15px;
-}
+/*.CheckLabelList {*/
+	/*margin-bottom: 15px;*/
+/*}*/
 
 .Message {
 	-webkit-animation: MessageFadeIn 1s;

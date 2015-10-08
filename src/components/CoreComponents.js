@@ -42,7 +42,30 @@ export function Button({label, enabled, onClickHandler}) {
   </button>
 }
 Button.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  enabled: React.PropTypes.bool,
+  label:          React.PropTypes.string.isRequired,
+  enabled:        React.PropTypes.bool,
   onClickHandler: React.PropTypes.func
+};
+
+Button.defaultProps = {
+  enabled: true
+};
+
+export function ButtonBar({children}) {
+  return <div className='ButtonBar'>{children}</div>;
+}
+// TODO: children proptypes
+
+export function ConfirmDialog({question, onYesHandler, onNoHandler}) {
+  return <div><h1>Please confirm</h1>{question}
+    <ButtonBar>
+      <Button label='Yes' onClickHandler={onYesHandler}/>
+      <Button label='No' onClickHandler={onNoHandler}/>
+    </ButtonBar>
+  </div>;
+}
+ConfirmDialog.propTypes = {
+  question: React.PropTypes.string.isRequired,
+  onYesHandler: React.PropTypes.func.isRequired,
+  onNoHandler: React.PropTypes.func.isRequired
 };

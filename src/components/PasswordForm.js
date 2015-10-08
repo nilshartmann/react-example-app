@@ -1,5 +1,5 @@
 import React from 'react';
-import {CheckLabelList, Button} from './CoreComponents';
+import {CheckLabelList, ButtonBar, Button} from './CoreComponents';
 
 export default class PasswordForm extends React.Component {
   constructor(props) {
@@ -23,16 +23,11 @@ export default class PasswordForm extends React.Component {
     this.setState({password: input});
   }
 
-  onSetPassword() {
-    const { password } = this.state;
-    this.setState({message: `Your highly secret password has been set to: ${password}`});
-  }
-
   render() {
-    const { password, message } = this.state;
+    const { password } = this.state;
+    const { onPasswordSet } = this.props;
     const checks = this.checkPassword(password);
     const isValidPassword = checks.every((check) => check.checked);
-    const messageLabel = message ? <div className='Message'>{message}</div> : null;
 
     return <div>
       <h1>Please choose a new password</h1>
@@ -42,12 +37,15 @@ export default class PasswordForm extends React.Component {
              onChange={(event) => this.onPasswordInputChange(event.target.value)}
              placeholder='Password'/>
       <CheckLabelList checks={checks}/>
-      <Button label='Set Password' enabled={isValidPassword} onClickHandler={() => this.onSetPassword()} />
-      {messageLabel}
+
+      <ButtonBar>
+        <Button label='Set Password' enabled={isValidPassword} onClickHandler={ () => onPasswordSet(password) }/>
+      </ButtonBar>
     </div>;
   }
 }
 
 PasswordForm.propTypes = {
-  restrictions: React.PropTypes.array.isRequired
+  restrictions:  React.PropTypes.array.isRequired,
+  onPasswordSet: React.PropTypes.func.isRequired
 };
