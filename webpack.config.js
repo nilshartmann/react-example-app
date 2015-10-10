@@ -33,7 +33,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
 
-  entry:   entries(),
+  entry: entries(),
   output:  {
     // output path
     path:       path.resolve(__dirname, 'public/dist'),
@@ -60,7 +60,7 @@ module.exports = {
       // * url-loader: Returns all referenced png/jpg files up to the specified limit as inline Data Url
       //   or - if above that limit - copies the file to your output directory and returns the url to that copied file
       //   Both values can be used for example for the 'src' attribute on an <img> element
-      {test: /\.(png|jpg)$/, loader: 'url?limit=25000'},
+      {test: /\.(png|jpg)$/, loader: 'url?limit=25000'}
     ]
   },
   plugins: [

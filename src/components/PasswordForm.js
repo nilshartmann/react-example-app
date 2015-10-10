@@ -7,6 +7,10 @@ export default class PasswordForm extends React.Component {
     this.state = {};
   }
 
+  onPasswordInputChange(input) {
+    this.setState({password: input});
+  }
+
   checkPassword(password) {
     const { restrictions } = this.props;
 
@@ -17,10 +21,6 @@ export default class PasswordForm extends React.Component {
     }));
 
     return checks;
-  }
-
-  onPasswordInputChange(input) {
-    this.setState({password: input});
   }
 
   render() {
@@ -46,7 +46,7 @@ export default class PasswordForm extends React.Component {
 }
 
 PasswordForm.propTypes = {
-  restrictions:  React.PropTypes.arrayOf(
+  restrictions: React.PropTypes.arrayOf(
     React.PropTypes.shape({
       label:    React.PropTypes.string.isRequired,
       validate: React.PropTypes.func.isRequired

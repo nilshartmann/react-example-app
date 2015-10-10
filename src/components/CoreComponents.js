@@ -6,7 +6,7 @@ import React from 'react';
 // ===
 // ============================================================================================================
 export function CheckLabel({label, checked}) {
-  return <div className={checked?'CheckLabel-checked':'CheckLabel-unchecked'}>{label}</div>;
+  return <div className={ checked ? 'CheckLabel-checked' : 'CheckLabel-unchecked'}>{label}</div>;
 }
 CheckLabel.propTypes = {
   label:   React.PropTypes.string.isRequired,
@@ -40,9 +40,9 @@ CheckLabelList.propTypes = {
 // ===
 // ============================================================================================================
 export function Button({label, enabled, onClickHandler}) {
-  return <button className={enabled?null:'disabled'} onClick={enabled ? onClickHandler : null}>
+  return <button className={enabled ? null : 'disabled'} onClick={enabled ? onClickHandler : null}>
     {label}
-  </button>
+  </button>;
 }
 Button.propTypes = {
   label:          React.PropTypes.string.isRequired,

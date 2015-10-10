@@ -15,28 +15,28 @@ const AtLeastEightCharacters = {
 const UppercaseLetters = {
   label:    'Contains uppercase letters.',
   validate: (value) => {
-    return value.match(/[A-Z]/) != null;
+    return value.match(/[A-Z]/) !== null;
   }
 };
 
 const LowercaseLetters = {
   label:    'Contains lowercase letters.',
   validate: (value) => {
-    return value.match(/[a-z]/) != null;
+    return value.match(/[a-z]/) !== null;
   }
 };
 
 const Numbers = {
   label:    'Contains numbers.',
   validate: (value) => {
-    return value.match(/\d/) != null;
+    return value.match(/\d/) !== null;
   }
 };
 
 const Punctuation = {
   label:    'Contains punctuation.',
   validate: (value) => {
-    return value.match(/['!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/) != null;
+    return value.match(/['!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/) !== null;
   }
 };
 
