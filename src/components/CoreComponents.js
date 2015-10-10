@@ -10,7 +10,7 @@ export function CheckLabel({label, checked}) {
 }
 CheckLabel.propTypes = {
   label:   React.PropTypes.string.isRequired,
-  checked: React.PropTypes.bool.isRequired
+  checked: React.PropTypes.bool
 };
 
 // ============================================================================================================
@@ -28,7 +28,10 @@ export function CheckLabelList({checks}) {
   </div>;
 }
 CheckLabelList.propTypes = {
-  checks: React.PropTypes.array.isRequired
+  checks: React.PropTypes.arrayOf(React.PropTypes.shape({
+    label: React.PropTypes.string.isRequired,
+    checked: React.PropTypes.bool
+  })).isRequired
 };
 
 // ============================================================================================================
@@ -54,7 +57,6 @@ Button.defaultProps = {
 export function ButtonBar({children}) {
   return <div className='ButtonBar'>{children}</div>;
 }
-// TODO: children proptypes
 
 export function MessageDialog({title, message, buttonTitle, onOkHandler}) {
   return <div><h1>{title}</h1>{message}
