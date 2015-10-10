@@ -29,7 +29,7 @@ export function CheckLabelList({checks}) {
 }
 CheckLabelList.propTypes = {
   checks: React.PropTypes.arrayOf(React.PropTypes.shape({
-    label: React.PropTypes.string.isRequired,
+    label:   React.PropTypes.string.isRequired,
     checked: React.PropTypes.bool
   })).isRequired
 };
@@ -66,8 +66,8 @@ export function MessageDialog({title, message, buttonTitle, onOkHandler}) {
   </div>;
 }
 MessageDialog.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  message: React.PropTypes.string.isRequired,
+  title:       React.PropTypes.string.isRequired,
+  message:     React.PropTypes.string.isRequired,
   buttonTitle: React.PropTypes.string.isRequired,
   onOkHandler: React.PropTypes.func.isRequired
 };

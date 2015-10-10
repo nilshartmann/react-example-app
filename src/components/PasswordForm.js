@@ -48,7 +48,7 @@ export default class PasswordForm extends React.Component {
 PasswordForm.propTypes = {
   restrictions:  React.PropTypes.arrayOf(
     React.PropTypes.shape({
-      label: React.PropTypes.string.isRequired,
+      label:    React.PropTypes.string.isRequired,
       validate: React.PropTypes.func.isRequired
     })).isRequired,
   onPasswordSet: React.PropTypes.func.isRequired

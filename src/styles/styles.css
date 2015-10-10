@@ -7,141 +7,120 @@
 
 html,
 button {
-	font-family: 'Roboto', sans-serif;
-	font-size: 18px;
-	font-weight: normal;
-	line-height: 1.5;
-	color: #CFD8DC;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #CFD8DC;
 }
 
 html {
-	background-color: #CFD8DC;
+  background-color: #CFD8DC;
 }
 
 button,
 button:focus {
-	border: 0;
-	outline: 0;
+  border: 0;
+  outline: 0;
 }
 
 input {
-	padding: 10px;
-	width: 100%;
-	margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 15px;
 
-	font-size: 18px;
-	border: 0;
-	box-sizing: border-box;
-	color: #727272;
+  font-size: 18px;
+  border: 0;
+  box-sizing: border-box;
+  color: #727272;
 }
 
 input:focus,
 input:hover {
-	outline: none !important;
+  outline: none !important;
 }
 
 h1 {
-	font-size: 22px;
-	line-height: 1.2;
-	font-weight: 500;
-	border-bottom: 1px solid #B6B6B6;
-	padding-bottom: 5px;
-	margin-bottom: 20px;
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 500;
+  border-bottom: 1px solid #B6B6B6;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 #mount {
-	margin: 50px auto;
-	padding: 25px 45px 25px 45px;
-	width: 90%;
-	max-width: 320px;
-	border: 0;
-	background-color: #455A64;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  margin: 50px auto;
+  padding: 25px 45px 25px 45px;
+  width: 90%;
+  max-width: 320px;
+  border: 0;
+  background-color: #455A64;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .ButtonBar {
-	margin-top: 20px;
-	padding-top: 20px;
-	border-top: 1px solid #B6B6B6;
-	text-align: right;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #B6B6B6;
+  text-align: right;
 }
 
 .ButtonBar button {
-	margin-left: 10px;
+  margin-left: 10px;
 }
 
 button {
-	box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
-	background-color: #4CAF50;
-	padding: 0 12px;
-	display: inline-block;
-	margin-left: auto;
-	margin-right: 0;
-	border-radius: 2px;
-	text-transform: uppercase;
-	line-height: 2.2;
-	-webkit-user-select: none; /* Chrome all / Safari all */
-	-moz-user-select: none; /* Firefox all */
-	-ms-user-select: none; /* IE 10+ */
-	user-select: none; /* Likely future */
+  box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+  background-color: #4CAF50;
+  padding: 0 12px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  line-height: 2.2;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
 }
 
 button.disabled {
-	background-color: #B6B6B6;
+  background-color: #B6B6B6;
 }
 
 button:hover:not(.disabled) {
-	cursor: pointer;
-	background-color: #43A047;
-	transition: box-shadow .25s;
-	box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+  background-color: #43A047;
+  transition: box-shadow .25s;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 .CheckLabel-unchecked,
 .CheckLabel-checked {
-	margin-left: 5px;
+  margin-left: 5px;
 }
 
 .CheckLabel-checked {
-	font-weight: bold;
-	/* color: #4CAF50; */
-	color: #4CAF50;
+  font-weight: bold;
+  color: #4CAF50;
 }
 
 .CheckLabel-unchecked::before {
-	background: url("check_grey.png") no-repeat 0 0;
+  background: url("check_grey.png") no-repeat 0 0;
 }
 
 .CheckLabel-checked::before {
-	background: url("check_green.png") no-repeat 0 0;
+  background: url("check_green.png") no-repeat 0 0;
 }
 
 .CheckLabel-unchecked::before,
 .CheckLabel-checked::before {
-	display: inline-block;
-	width: 0.8em;
-	height: 0.8em;
-	margin-right: 8px;
-	content: "";
-	background-size: 100%;
-}
-
-/*.CheckLabelList {*/
-	/*margin-bottom: 15px;*/
-/*}*/
-
-.Message {
-	-webkit-animation: MessageFadeIn 1s;
-	margin-top: 20px;
-}
-
-@keyframes MessageFadeIn {
-	0% {
-		margin-top: 100%;
-		height: 300%;
-	}
-	100% {
-		margin-top: 20px;
-		height: 100%;
-	}
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 8px;
+  content: "";
+  background-size: 100%;
 }

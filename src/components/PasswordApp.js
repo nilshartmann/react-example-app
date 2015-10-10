@@ -34,7 +34,7 @@ export default class PasswordApp extends React.Component {
         title='Password set!'
         message={`Your new password: ${password}`}
         buttonTitle='Reset'
-        onOkHandler={()=>this.setPassword(null)}
+        onOkHandler={ () => this.setPassword(null) }
       />;
     } else {
       return <PasswordForm
