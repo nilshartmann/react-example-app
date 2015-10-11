@@ -5,9 +5,18 @@ import React from 'react';
 // === CheckLabel :: Shows a "Check" (label and green or red icon)
 // ===
 // ============================================================================================================
+// class-notation needed for test:
+//export class CheckLabel extends React.Component {
+//  render() {
+//    const {label, checked} = this.props;
+//    return <div className={ checked ? 'CheckLabel-checked' : 'CheckLabel-unchecked'}>{label}</div>;
+//  }
+//}
+
 export function CheckLabel({label, checked}) {
   return <div className={ checked ? 'CheckLabel-checked' : 'CheckLabel-unchecked'}>{label}</div>;
 }
+
 CheckLabel.propTypes = {
   label:   React.PropTypes.string.isRequired,
   checked: React.PropTypes.bool
