@@ -40,7 +40,7 @@ CheckLabelList.propTypes = {
 // ===
 // ============================================================================================================
 export function Button({label, enabled, onClickHandler}) {
-  return <button className={enabled ? null : 'disabled'} onClick={enabled ? onClickHandler : null}>
+  return <button disabled={!enabled} onClick={enabled ? onClickHandler : null}>
     {label}
   </button>;
 }

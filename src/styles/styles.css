@@ -87,11 +87,11 @@ button {
   user-select: none; /* Likely future */
 }
 
-button.disabled {
+button:disabled {
   background-color: #B6B6B6;
 }
 
-button:hover:not(.disabled) {
+button:hover:not(:disabled) {
   cursor: pointer;
   background-color: #43A047;
   transition: box-shadow .25s;
