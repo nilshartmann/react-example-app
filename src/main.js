@@ -1,10 +1,8 @@
-require('./styles/styles.css');
+import './styles/styles.css';
 
 import React from 'react';
-import ReactDom from 'react-dom';
-import PasswordForm from './PasswordForm';
+import ReactDOM from 'react-dom';
+import PasswordApp from './components/PasswordApp';
 
-const component = <PasswordForm />;
-
-ReactDom.render(component, document.getElementById('mount'));
+ReactDOM.render(<PasswordApp />, document.getElementById('mount'));
 

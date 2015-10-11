@@ -1,31 +1,25 @@
 {
-  "ecmaFeatures": {
-    "jsx": true,
-    "modules": true
-  },
+  "extends": "airbnb",
   "env": {
     "browser": true,
-    // add support for 'require' keyword:
+    "mocha": true,
     "node": true
   },
-  "plugins": [
-    // Add React/JSX-Semantic rules: http://eslint.org/blog/2015/03/eslint-0.17.0-released/
-    "react"
-  ],
-  // Add babel parser for ES7 features
-  "parser": "babel-eslint",
   "rules": {
-    "strict": [
-      2,
-      "global"
-    ],
-    "no-underscore-dangle": 0,
-    // vertical alignment in object literals
-    "key-spacing": 0,
-    // force single quotes
-    "quotes": [
-      2,
-      "single"
-    ]
-  }
+    "comma-dangle": [2, "never"],
+    "eol-last": 0,
+    "id-length": 0,
+    "key-spacing": [2, { "align": "value" }],
+    "jsx-quotes": [2, "prefer-single"],
+    "no-else-return": 0,
+    "spaced-comment": 0,
+
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/wrap-multilines": 0
+  },
+  "plugins": [
+    "react"
+  ]
 }

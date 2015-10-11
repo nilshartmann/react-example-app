@@ -1,5 +1,4 @@
 const NotEmpty = {
-  id:       'not-empty',
   label:    'Enter at least one character',
   validate: (value) => {
     return value.length > 0;
@@ -7,7 +6,6 @@ const NotEmpty = {
 };
 
 const AtLeastEightCharacters = {
-  id:       'at-least-eight-chars',
   label:    'At least 8 characters long.',
   validate: (value) => {
     return value.length >= 8;
@@ -15,34 +13,30 @@ const AtLeastEightCharacters = {
 };
 
 const UppercaseLetters = {
-  id:       'uppercase-letters',
   label:    'Contains uppercase letters.',
   validate: (value) => {
-    return value.match(/[A-Z]/) != null;
+    return value.match(/[A-Z]/) !== null;
   }
 };
 
 const LowercaseLetters = {
-  id:       'lowercase-letters',
   label:    'Contains lowercase letters.',
   validate: (value) => {
-    return value.match(/[a-z]/) != null;
+    return value.match(/[a-z]/) !== null;
   }
 };
 
 const Numbers = {
-  id:       'numbers',
   label:    'Contains numbers.',
   validate: (value) => {
-    return value.match(/\d/) != null;
+    return value.match(/\d/) !== null;
   }
 };
 
 const Punctuation = {
-  id:       'punctuation',
   label:    'Contains punctuation.',
   validate: (value) => {
-    return value.match(/['!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/) != null;
+    return value.match(/['!"#$%&\\'()\*+,\-\.\/:;<=>?@\[\\\]\^_`{|}~']/) !== null;
   }
 };
 
