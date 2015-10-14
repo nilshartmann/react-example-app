@@ -21,6 +21,7 @@ git clone -b gh-pages https://github.com/nilshartmann/react-passwordfield-exampl
 
 rm -rf $TMPDIR/react-passwordfield-example/dist
 cp -r ./public/* $TMPDIR/react-passwordfield-example
+cp ./index-gh-pages.html $TMPDIR/react-passwordfield-example/index.html
 
 git --git-dir=$TMPDIR/react-passwordfield-example/.git --work-tree=$TMPDIR/react-passwordfield-example add -A
 git --git-dir=$TMPDIR/react-passwordfield-example/.git --work-tree=$TMPDIR/react-passwordfield-example commit -m "Deployed to gh-pages from commit $COMMIT"
