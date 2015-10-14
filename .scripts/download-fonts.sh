@@ -21,6 +21,5 @@ for i in `cat $FONTS_DIR/google-fonts.css | grep url | cut -d "(" -f 4 | cut -d 
 
   curl $i -o $TARGET_FILE
 done
-
-sed 's/'${FONTURL}'/\/fonts/' $FONTS_DIR/google-fonts.css >$FONTS_DIR/google-fonts-offline.css
+sed 's/'${FONTURL}\\/'//' $FONTS_DIR/google-fonts.css >$FONTS_DIR/google-fonts-offline.css
 rm $FONTS_DIR/google-fonts.css
