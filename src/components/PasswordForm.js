@@ -17,7 +17,7 @@ export default class PasswordForm extends React.Component {
     // check each restriction
     const checks = restrictions.map((r) => ({
       label:   r.label,
-      checked: !!password && r.validate(password)
+      checked: r.validate(password)
     }));
 
     return checks;

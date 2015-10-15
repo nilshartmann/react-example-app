@@ -23,12 +23,12 @@ describe.skip('PasswordForm', () => {
     const restrictions = [
       {
         label: 'eins', validate(v) {
-        return v !== 'zzzz' && v.length > 2;
+        return !!v && v !== 'zzzz' && v.length > 2;
       }
       },
       {
         label: 'zwei', validate(v) {
-        return v === 'yyyy' || v === 'zzzz';
+        return !!v && v === 'yyyy' || v === 'zzzz';
       }
       }
     ];

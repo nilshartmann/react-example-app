@@ -3,6 +3,10 @@ import { expect } from 'chai';
 
 describe('Restrictions', () => {
   describe('NotEmpty', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.NotEmpty.validate(null)).to.eql(false);
+      expect(Restrictions.NotEmpty.validate(undefined)).to.eql(false);
+    });
     it('should fail on empty string', () => {
       expect(Restrictions.NotEmpty.validate('')).to.eql(false);
     });
@@ -12,6 +16,10 @@ describe('Restrictions', () => {
   });
 
   describe('AtLeastEightCharacters', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.AtLeastEightCharacters.validate(null)).to.eql(false);
+      expect(Restrictions.AtLeastEightCharacters.validate(undefined)).to.eql(false);
+    });
     it('should not work for strings shorter than eight chars', () => {
       expect(Restrictions.AtLeastEightCharacters.validate('1234567')).to.eql(false);
     });
@@ -24,6 +32,10 @@ describe('Restrictions', () => {
   });
 
   describe('UppercaseLetters', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.UppercaseLetters.validate(null)).to.eql(false);
+      expect(Restrictions.UppercaseLetters.validate(undefined)).to.eql(false);
+    });
     it('should work with mixed cases', () => {
       expect(Restrictions.UppercaseLetters.validate('aA1')).to.eql(true);
     });
@@ -37,6 +49,10 @@ describe('Restrictions', () => {
   });
 
   describe('LowercaseLetters', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.LowercaseLetters.validate(null)).to.eql(false);
+      expect(Restrictions.LowercaseLetters.validate(undefined)).to.eql(false);
+    });
     it('should work with mixed cases', () => {
       expect(Restrictions.LowercaseLetters.validate('aA1')).to.eql(true);
     });
@@ -51,6 +67,10 @@ describe('Restrictions', () => {
   });
 
   describe('Numbers', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.Numbers.validate(null)).to.eql(false);
+      expect(Restrictions.Numbers.validate(undefined)).to.eql(false);
+    });
     it('should work with numeric chars only', () => {
       expect(Restrictions.Numbers.validate('1')).to.eql(true);
     });
@@ -69,6 +89,10 @@ describe('Restrictions', () => {
   });
 
   describe('Punctuation', () => {
+    it('should fail on null and undefined', () => {
+      expect(Restrictions.Punctuation.validate(null)).to.eql(false);
+      expect(Restrictions.Punctuation.validate(undefined)).to.eql(false);
+    });
     it('should work on dots only', () => {
       expect(Restrictions.Punctuation.validate('...')).to.eql(true);
     });
