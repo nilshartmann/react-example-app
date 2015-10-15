@@ -98,12 +98,19 @@ button:hover:not(:disabled) {
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
-.CheckLabel-unchecked,
-.CheckLabel-checked {
-  margin-left: 5px;
+.Label,
+.Label-success {
+  margin-top: 7px;
+  margin-left: 1.4em
 }
 
+.CheckLabel-unchecked,
 .CheckLabel-checked {
+  margin-left: 0.2em;
+}
+
+.CheckLabel-checked,
+.Label-success {
   font-weight: bold;
   color: #4CAF50;
 }
@@ -121,7 +128,7 @@ button:hover:not(:disabled) {
   display: inline-block;
   width: 0.8em;
   height: 0.8em;
-  margin-right: 8px;
+  margin-right: 0.4em;
   content: "";
   background-size: 100%;
 }

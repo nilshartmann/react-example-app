@@ -27,7 +27,8 @@ export default class PasswordForm extends React.Component {
     const { password } = this.state;
     const { onPasswordSet } = this.props;
     const checks = this.checkPassword(password);
-    const isValidPassword = checks.every((check) => check.checked);
+    const failedChecks = checks.reduce((count, check)=> check.checked ? count : count + 1, 0);
+    const isValidPassword = failedChecks === 0;
 
     return <div>
       <h1>Please choose a new password</h1>
@@ -37,6 +38,11 @@ export default class PasswordForm extends React.Component {
              onChange={(event) => this.onPasswordInputChange(event.target.value)}
              placeholder='Password'/>
       <CheckLabelList checks={checks}/>
+      {failedChecks > 0 ?
+        <div className='Label'>{failedChecks} checks failed</div>
+        :
+        <div className='Label-success'>All checks passed!</div>
+      }
 
       <ButtonBar>
         <Button label='Set Password' enabled={isValidPassword} onClickHandler={ () => onPasswordSet(password) }/>
