@@ -31,7 +31,6 @@ export default class PasswordForm extends React.Component {
     const isValidPassword = failedChecks === 0;
 
     return <div>
-      <h1>Please choose a new password</h1>
       <input autoFocus='true'
              type='password'
              value={password}

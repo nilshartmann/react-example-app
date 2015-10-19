@@ -67,15 +67,14 @@ export function ButtonBar({children}) {
   return <div className='ButtonBar'>{children}</div>;
 }
 
-export function MessageDialog({title, message, buttonTitle, onOkHandler}) {
-  return <div><h1>{title}</h1>{message}
+export function MessageDialog({message, buttonTitle, onOkHandler}) {
+  return <div>{message}
     <ButtonBar>
       <Button label={buttonTitle} onClickHandler={onOkHandler}/>
     </ButtonBar>
   </div>;
 }
 MessageDialog.propTypes = {
-  title:       React.PropTypes.string.isRequired,
   message:     React.PropTypes.string.isRequired,
   buttonTitle: React.PropTypes.string.isRequired,
   onOkHandler: React.PropTypes.func.isRequired

@@ -29,18 +29,23 @@ export default class PasswordApp extends React.Component {
   render() {
     const { password } = this.state;
 
-    if (password) {
-      return <MessageDialog
-        title='Password set!'
-        message={`Your new password: ${password}`}
-        buttonTitle='Reset'
-        onOkHandler={ () => this.setPassword(null) }
-      />;
+    if (!password) {
+      return <div>
+        <h1>Step 1: Choose new password</h1>
+        <PasswordForm
+          restrictions={restrictions}
+          onPasswordSet={ (newPassword) => this.setPassword(newPassword) }
+        />
+      </div>;
     } else {
-      return <PasswordForm
-        restrictions={restrictions}
-        onPasswordSet={ (newPassword) => this.setPassword(newPassword) }
-      />;
+      return <div>
+        <h1>Step 2: Confirm password</h1>
+        <MessageDialog
+          message={`Your new password: ${password}`}
+          buttonTitle='Reset'
+          onOkHandler={ () => this.setPassword(null) }
+        />
+      </div>;
     }
   }
 }
