@@ -1,5 +1,5 @@
 import React from 'react';
-import {CheckLabelList, ButtonBar, Button} from './CoreComponents';
+import {CheckLabelList, ButtonBar, Button} from './../CoreComponents';
 
 export default class PasswordForm extends React.Component {
   constructor(props) {

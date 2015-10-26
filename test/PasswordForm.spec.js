@@ -10,7 +10,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
 
-import PasswordForm from '../src/components/PasswordForm';
+import PasswordForm from '../src/components/password/PasswordForm';
 import { CheckLabel } from '../src/components/CoreComponents';
 
 // due to bugs in react TestUtils(?) this does not work with pure function component (CheckLabel)

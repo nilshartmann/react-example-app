@@ -3,10 +3,10 @@
 // ---------------------------------------------------------------------------
 
 import React from 'react';
-import {MessageDialog} from './CoreComponents';
+import {MessageDialog} from './../CoreComponents';
 import PasswordForm from './PasswordForm';
 
-import * as Restrictions from '../model/Restrictions';
+import * as Restrictions from '../../model/Restrictions';
 
 const restrictions = [
   Restrictions.AtLeastEightCharacters,
