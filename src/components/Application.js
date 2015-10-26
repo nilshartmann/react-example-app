@@ -2,6 +2,7 @@ import React from 'react';
 
 import PasswordView from './password/PasswordView';
 import WeatherView from './weather/WeatherView';
+import ChartView from './chart/ChartView';
 
 function Navigation({activeViewId, onClickHandler, items}) {
   return <ul className='NavigationBar'>
@@ -34,6 +35,8 @@ export default class Application extends React.Component {
       return <PasswordView />;
     case 'weatherView':
       return <WeatherView />;
+    case 'chartView':
+      return <ChartView />;
     default:
     }
 
@@ -43,6 +46,9 @@ export default class Application extends React.Component {
 
   render() {
     const { currentViewId } = this.state;
+
+    const applicationViewClassNames = `ApplicationView ApplicationView-${currentViewId}`;
+
     return <div>
       <Navigation
         activeViewId={currentViewId}
@@ -54,7 +60,7 @@ export default class Application extends React.Component {
         ]}
       />
 
-      <div className='ApplicationView'>
+      <div className={applicationViewClassNames}>
         { this.renderApplicationView(currentViewId) }
       </div>
     </div>;
