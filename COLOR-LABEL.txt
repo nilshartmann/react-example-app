@@ -1,0 +1,5 @@
+document.getElementsByClassName('Label')[0].style.color='red'
+
+
+document.getElementsByClassName('ApplicationView')[0].style.border='2px solid red'
+

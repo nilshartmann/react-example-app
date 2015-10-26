@@ -168,3 +168,8 @@ button:hover:not(:disabled) {
   content: "";
   background-size: 100%;
 }
+
+/* For demonstration virtual dom updates */
+.Red {
+  color: red;
+}
