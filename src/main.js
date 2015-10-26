@@ -2,7 +2,10 @@ import './styles/styles.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PasswordApp from './components/PasswordApp';
+//import PasswordApp from './components/PasswordApp';
+import WeatherView from './components/weather/WeatherView';
 
-ReactDOM.render(<PasswordApp />, document.getElementById('mount'));
+
+ReactDOM.render(<WeatherView />, document.getElementById('mount'));
+
 
