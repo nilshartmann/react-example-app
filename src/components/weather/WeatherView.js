@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from '../CoreComponents';
+import WeatherPanel from './WeatherPanel';
 
 const API_KEY = '444112d540b141913a9c1ee6d7f495fa';
 
@@ -24,19 +25,6 @@ export default class WeatherView extends React.Component {
       );
   }
 
-  renderWeather(weather) {
-    if (!weather) {
-      return null;
-    }
-
-    const currentWeather = weather.weather[0];
-    return <div>
-      <h1>Weather in {weather.name}</h1>
-      <h2>{weather.main.temp} °C <img src={`http://openweathermap.org/img/w/${currentWeather.icon}.png`} /></h2>
-      <p>{currentWeather.description}</p>
-    </div>;
-  }
-
   render() {
     const { city, weather } = this.state;
     return <div>
@@ -52,8 +40,7 @@ export default class WeatherView extends React.Component {
               onClickHandler={ () => this.fetchWeather() }
       />
 
-      {this.renderWeather(weather)}
-
+      <WeatherPanel weather={weather} />
     </div>;
   }
 }
