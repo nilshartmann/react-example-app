@@ -6,3 +6,4 @@ mongodb-data/
 my-notes.txt
 npm-debug.log
 
+.idea/workspace.xml

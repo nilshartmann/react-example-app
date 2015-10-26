@@ -7,6 +7,10 @@ export default class PasswordForm extends React.Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.refs.passwordInputField.focus();
+  }
+
   onPasswordInputChange(input) {
     this.setState({password: input});
   }
@@ -31,7 +35,7 @@ export default class PasswordForm extends React.Component {
     const isValidPassword = failedChecks === 0;
 
     return <div>
-      <input autoFocus='true'
+      <input ref='passwordInputField'
              type='password'
              value={password}
              onChange={(event) => this.onPasswordInputChange(event.target.value)}
@@ -40,7 +44,7 @@ export default class PasswordForm extends React.Component {
       {failedChecks > 0 ?
         <div className='Label'>{failedChecks} checks failed</div>
         :
-        <div className='Label-success'>All checks passed!</div>
+        <div className='Label Label-success'>All checks passed!</div>
       }
 
       <ButtonBar>
