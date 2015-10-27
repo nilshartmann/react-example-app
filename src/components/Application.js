@@ -1,16 +1,10 @@
 import React from 'react';
 
+import {NavigationBar} from './CoreComponents';
+
 import PasswordView from './password/PasswordView';
 import WeatherView from './weather/WeatherView';
 import ChartView from './chart/ChartView';
-
-function Navigation({activeViewId, onClickHandler, items}) {
-  return <ul className='NavigationBar'>
-      {items.map( (item) => <li key={item.viewId}
-                             onClick={() => onClickHandler(item.viewId)}
-                             className={item.viewId === activeViewId ? 'NavigationBar-Item NavigationBar-Item-Active' : 'NavigationBar-Item'}>{item.label}</li>)}
- </ul>;
-}
 
 export default class Application extends React.Component {
   constructor(props) {
@@ -31,18 +25,17 @@ export default class Application extends React.Component {
     }
 
     switch (currentViewId) {
-    case 'passwordView':
-      return <PasswordView />;
-    case 'weatherView':
-      return <WeatherView />;
-    case 'chartView':
-      return <ChartView />;
-    default:
+      case 'passwordView':
+        return <PasswordView />;
+      case 'weatherView':
+        return <WeatherView />;
+      case 'chartView':
+        return <ChartView />;
+      default:
     }
 
     return <p>Invalid View Id {currentViewId}</p>;
   }
-
 
   render() {
     const { currentViewId } = this.state;
@@ -50,7 +43,7 @@ export default class Application extends React.Component {
     const applicationViewClassNames = `ApplicationView ApplicationView-${currentViewId}`;
 
     return <div>
-      <Navigation
+      <NavigationBar
         activeViewId={currentViewId}
         onClickHandler={ (selectedViewId) => this.onViewSelected(selectedViewId) }
         items={[

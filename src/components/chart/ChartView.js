@@ -3,6 +3,9 @@ import d3 from 'd3';
 
 import {ButtonBar, Button} from '../CoreComponents';
 
+const increaseCount = (countable) => ({...countable, count: countable.count + 1});
+const countAll = (countables) => countables.reduce((prev, curr) => prev + curr.count, 0);
+
 export default class ChartView extends React.Component {
   constructor(props) {
     super(props);
@@ -26,20 +29,19 @@ export default class ChartView extends React.Component {
   }
 
   onDrinkSelected(drinkName) {
-    const increaseDrink = (drink) => ({...drink, count: drink.count + 1});
     const { drinks } = this.state;
-    const newDrinks = drinks.map( (drink) => drink.name === drinkName ? increaseDrink(drink) : drink );
+    const newDrinks = drinks.map( (drink) => drink.name === drinkName ? increaseCount(drink) : drink );
 
     this.setState({drinks: newDrinks});
   }
 
   renderChart() {
-    // this is NOT d3 best practice...
-
     const { drinks } = this.state;
-    const totalCount = drinks.reduce((prev, curr) => prev + curr.count, 0);
+    const { chart: chartElement } = this.refs;
+    const totalCount = countAll(drinks);
 
-    const data = d3.select(this.refs.chart)
+    // this is NOT d3 best practice...
+    const data = d3.select(chartElement)
       .selectAll('div')
       .data(drinks, Math.random);
 
@@ -68,11 +70,10 @@ export default class ChartView extends React.Component {
 
     return <div>
       <h1>Chart generator</h1>
-      <div ref='chart' />
+      <div ref='chart'></div>
       <ButtonBar>
         { drinks.map( (drink) => this.renderDrinkButton(drink)) }
       </ButtonBar>
-
     </div>;
   }
 }
