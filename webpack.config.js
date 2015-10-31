@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var argv = require('yargs').argv;
 const makeDist = argv.dist;
-const mainJs = path.resolve(__dirname, 'src/main.js');
+const mainJs = path.resolve(__dirname, 'src/app.js');
 const babelLoaders = makeDist ? ['babel?stage=0'] : ['react-hot', 'babel?stage=0'];
 const entries = makeDist ? mainJs : ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server', mainJs];
 const plugins = makeDist ? null : [
