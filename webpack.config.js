@@ -1,30 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
 var argv = require('yargs').argv;
+const makeDist = argv.dist;
+const mainJs = path.resolve(__dirname, 'src/main.js');
+const babelLoaders = makeDist ? ['babel?stage=0'] : ['react-hot', 'babel?stage=0'];
+const entries = makeDist ? mainJs : ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server', mainJs];
+const plugins = makeDist ? null : [
+  // Enable Hot Module Replacement
+  new webpack.HotModuleReplacementPlugin(),
 
-function babelLoaders() {
-  if (argv.dist) {
-    return ['babel?stage=0'];
-  }
-
-  return ['react-hot', 'babel?stage=0'];
-}
-
-function entries() {
-  if (argv.dist) {
-    // path to our 'root' module
-    return path.resolve(__dirname, 'src/main.js');
-  }
-
-  return [
-    // webpack dev server with hot reloading
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/dev-server',
-
-    // path to our 'root' module
-    path.resolve(__dirname, 'src/main.js')
-  ];
-}
+// Avoid publishing files when compilation failed
+  new webpack.NoErrorsPlugin()
+];
 
 module.exports = {
   resolve: {
@@ -33,21 +20,19 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
 
-  entry: entries(),
+  entry:   entries,
   output:  {
     // output path
     path:       path.resolve(__dirname, 'public/dist'),
     publicPath: 'dist/',
-
-    // Name of the resulting bundle file that
-    filename: 'main.js'
+    filename:   'dist.js'
   },
   module:  {
     loaders: [
       // JSX/ES6 handling with babel
       // * babel-loader: uses Babel to transform your JSX/ES6 JavaScript to ECMAScript 5
       // * react-hot: Reloads your React Component on code changes without loosing the application state
-      {test: /\.js$/, exclude: /node_modules/, loaders: babelLoaders()},
+      {test: /\.js$/, exclude: /node_modules/, loaders: babelLoaders},
 
       {test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'},
       // CSS handling
@@ -63,13 +48,7 @@ module.exports = {
       {test: /\.(png|jpg)$/, loader: 'url?limit=25000'}
     ]
   },
-  plugins: [
-    // Enable Hot Module Replacement
-    new webpack.HotModuleReplacementPlugin(),
-
-    // Avoid publishing files when compilation failed
-    new webpack.NoErrorsPlugin()
-  ],
+  plugins: plugins,
   stats:   {
     // Nice colored output
     colors: true
