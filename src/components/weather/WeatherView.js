@@ -16,17 +16,25 @@ export default class WeatherView extends React.Component {
     this.fetchWeather();
   }
 
+  onServerResponse(result, error) {
+    this.setState({
+      weather: result,
+      error:   error
+    });
+  }
+
   fetchWeather() {
     const { city } = this.state;
     const fetchUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city},de&appid=${API_KEY}&units=metric`;
     fetch(fetchUrl)
-      .then( response => response.json())
-      .then( weather => this.setState({weather})
+      .then(response => response.json())
+      .then(weather => this.onServerResponse(weather))
+      .catch(error => this.onServerResponse(null, error.message)
       );
   }
 
   render() {
-    const { city, weather } = this.state;
+    const { city, weather, error } = this.state;
     return <div>
       <h1>Current Weather</h1>
       <input type='text'
@@ -40,7 +48,7 @@ export default class WeatherView extends React.Component {
               onClickHandler={ () => this.fetchWeather() }
       />
 
-      <WeatherPanel weather={weather} />
+      { weather ? <WeatherPanel weather={weather}/> : <div className='Red'>Error: {error}</div> }
     </div>;
   }
 }
