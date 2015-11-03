@@ -20578,6 +20578,14 @@
 	      this.fetchWeather();
 	    }
 	  }, {
+	    key: 'onServerResponse',
+	    value: function onServerResponse(result, error) {
+	      this.setState({
+	        weather: result,
+	        error: error
+	      });
+	    }
+	  }, {
 	    key: 'fetchWeather',
 	    value: function fetchWeather() {
 	      var _this = this;
@@ -20588,7 +20596,9 @@
 	      fetch(fetchUrl).then(function (response) {
 	        return response.json();
 	      }).then(function (weather) {
-	        return _this.setState({ weather: weather });
+	        return _this.onServerResponse(weather);
+	      })['catch'](function (error) {
+	        return _this.onServerResponse(null, error.message);
 	      });
 	    }
 	  }, {
@@ -20599,6 +20609,7 @@
 	      var _state = this.state;
 	      var city = _state.city;
 	      var weather = _state.weather;
+	      var error = _state.error;
 	
 	      return _react2['default'].createElement(
 	        'div',
@@ -20621,7 +20632,13 @@
 	            return _this2.fetchWeather();
 	          }
 	        }),
-	        _react2['default'].createElement(_WeatherPanel2['default'], { weather: weather })
+	        weather ? _react2['default'].createElement(_WeatherPanel2['default'], { weather: weather }) : null,
+	        error ? _react2['default'].createElement(
+	          'div',
+	          { className: 'Red' },
+	          'Error: ',
+	          error
+	        ) : null
 	      );
 	    }
 	  }]);
