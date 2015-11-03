@@ -18,7 +18,7 @@ npm run dist
 
 # checkout remote repository to
 rm -rf $TMPDIR/react-passwordfield-example
-git clone -b gh-pages https://github.com/nilshartmann/react-passwordfield-example $TMPDIR/react-passwordfield-example
+git clone -b gh-pages https://github.com/nilshartmann/react-example-app $TMPDIR/react-passwordfield-example
 
 rm -rf $TMPDIR/react-passwordfield-example/dist
 cp -r ./public/* $TMPDIR/react-passwordfield-example
