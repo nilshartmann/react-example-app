@@ -48,7 +48,8 @@ export default class WeatherView extends React.Component {
               onClickHandler={ () => this.fetchWeather() }
       />
 
-      { weather ? <WeatherPanel weather={weather}/> : <div className='Red'>Error: {error}</div> }
+      { weather ? <WeatherPanel weather={weather}/> : null }
+      { error ? <div className='Red'>Error: {error}</div> : null}
     </div>;
   }
 }
