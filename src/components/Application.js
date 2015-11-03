@@ -1,61 +1,24 @@
 import React from 'react';
+import {NavigationBar} from '../components/CoreComponents';
 
-import {NavigationBar} from './CoreComponents';
+export default function Application({history, children}) {
+  // TODO
+  const isChartExample = history.isActive('/chart');
+  const applicationClassName = isChartExample ? 'ApplicationView ApplicationView-chartView' : 'ApplicationView';
 
-import PasswordView from './password/PasswordView';
-import WeatherView from './weather/WeatherView';
-import ChartView from './chart/ChartView';
-
-export default class Application extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentViewId: 'passwordView'
-    };
-  }
-
-  onViewSelected(currentViewId) {
-    this.setState({currentViewId});
-  }
-
-  renderApplicationView(currentViewId) {
-    if (!currentViewId) {
-      return null;
-    }
-
-    switch (currentViewId) {
-      case 'passwordView':
-        return <PasswordView />;
-      case 'weatherView':
-        return <WeatherView />;
-      case 'chartView':
-        return <ChartView />;
-      default:
-    }
-
-    return <p>Invalid View Id {currentViewId}</p>;
-  }
-
-  render() {
-    const { currentViewId } = this.state;
-
-    const applicationViewClassNames = `ApplicationView ApplicationView-${currentViewId}`;
-
-    return <div>
-      <NavigationBar
-        activeViewId={currentViewId}
-        onClickHandler={ (selectedViewId) => this.onViewSelected(selectedViewId) }
-        items={[
-        {label: 'Password Form', viewId: 'passwordView' },
-        {label: 'Weather Report', viewId: 'weatherView' },
-        {label: 'Chart Example', viewId: 'chartView' }
-        ]}
-      />
-
-      <div className={applicationViewClassNames}>
-        { this.renderApplicationView(currentViewId) }
-      </div>
-    </div>;
-  }
+  return <div>
+    <NavigationBar items={[
+        {to: '/password', label: 'Passwort'},
+        {to: '/weather', label: 'Weather Report'},
+        {to: '/chart', label: 'Chart Example'}
+    ]}/>
+    <div className={applicationClassName}>
+      { children }
+    </div>
+  </div>;
 }
+
+Application.propTypes = {
+  children: React.PropTypes.any,
+  history:  React.PropTypes.any
+};

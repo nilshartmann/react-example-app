@@ -63,16 +63,20 @@ h1 {
   border-bottom: 2px solid #455A64;
 }
 
-.NavigationBar-Item {
+.NavigationBar-Item,
+.NavigationBar-Item a {
   margin: 0 5px 0 5px;
   padding: 4px;
   list-style: none;
   display: inline;
   color: #455A64;
   text-transform: uppercase;
+  text-decoration: none;
+
 }
 
-.NavigationBar-Item-Active {
+.NavigationBar-Item-Active,
+a.NavigationBar-Item-Active {
   font-weight: bold;
   text-decoration: underline;
 }

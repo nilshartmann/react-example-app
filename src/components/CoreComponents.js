@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 // ============================================================================================================
 // ===
@@ -85,18 +86,18 @@ MessageDialog.propTypes = {
 // === NavigationBar :: Displays a simple Navigation Bar with given items
 // ===
 // ============================================================================================================
-export function NavigationBar({activeViewId, onClickHandler, items}) {
+export function NavigationBar({items}) {
   return <ul className='NavigationBar'>
-    {items.map((item) => <li key={item.viewId}
-                             onClick={() => onClickHandler(item.viewId)}
-                             className={item.viewId === activeViewId ? 'NavigationBar-Item NavigationBar-Item-Active' : 'NavigationBar-Item'}>{item.label}</li>)}
+    {items.map((item) =>
+      <li className='NavigationBar-Item' key={item.label}>
+        <Link to={item.to} activeClassName='NavigationBar-Item-Active'>{item.label}</Link>
+      </li>
+    )}
   </ul>;
 }
 NavigationBar.propTypes = {
-  activeViewId:   React.PropTypes.string,
-  onClickHandler: React.PropTypes.func.isRequired,
-  items:          React.PropTypes.arrayOf(React.PropTypes.shape({
-    viewId: React.PropTypes.string.isRequired,
-    label:  React.PropTypes.string.isRequired
+  items: React.PropTypes.arrayOf(React.PropTypes.shape({
+    to:    React.PropTypes.string.isRequired,
+    label: React.PropTypes.string.isRequired
   }))
 };
