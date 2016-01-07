@@ -12,10 +12,10 @@ export default class ChartView extends React.Component {
 
     this.state = {
       drinks: [
-        { name: 'Cola', count: 5 },
-        { name: 'Bier', count: 10 },
-        { name: 'Wein', count: 3 },
-        { name: 'Tee', count: 7 }
+        {name: 'Cola', count: 5},
+        {name: 'Bier', count: 10},
+        {name: 'Wein', count: 3},
+        {name: 'Tee', count: 7}
       ]
     };
   }
@@ -30,7 +30,7 @@ export default class ChartView extends React.Component {
 
   onDrinkSelected(drinkName) {
     const { drinks } = this.state;
-    const newDrinks = drinks.map( (drink) => drink.name === drinkName ? increaseCount(drink) : drink );
+    const newDrinks = drinks.map((drink) => drink.name === drinkName ? increaseCount(drink) : drink);
 
     this.setState({drinks: newDrinks});
   }
@@ -72,7 +72,7 @@ export default class ChartView extends React.Component {
       <h1>Chart generator</h1>
       <div ref='chart'></div>
       <ButtonBar>
-        { drinks.map( (drink) => this.renderDrinkButton(drink)) }
+        { drinks.map((drink) => this.renderDrinkButton(drink)) }
       </ButtonBar>
     </div>;
   }

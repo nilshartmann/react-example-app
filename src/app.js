@@ -8,5 +8,3 @@ import Application from './components/Application';
 
 
 ReactDOM.render(<Application />, document.getElementById('mount'));
-
-

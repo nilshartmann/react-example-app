@@ -6,7 +6,7 @@ import React from 'react';
 import {MessageDialog} from './../CoreComponents';
 import PasswordForm from './PasswordForm';
 
-import * as Restrictions from '../../model/Restrictions';
+import Restrictions from '../../model/Restrictions';
 
 const restrictions = [
   Restrictions.AtLeastEightCharacters,
