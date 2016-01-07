@@ -15,6 +15,7 @@ const restrictions = [
 
 const passwordForm = <PasswordForm
   restrictions={restrictions}
+  onPasswordSet={ newPassword => console.log(newPassword) }
 />;
 
 ReactDOM.render(passwordForm, document.getElementById('mount'));
