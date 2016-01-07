@@ -1,8 +1,20 @@
+import './styles/styles.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PasswordForm from './components/PasswordForm';
+import Restrictions from './model/Restrictions';
 
-function Hello() {
-  return <div>Hello World!</div>;
-}
+const restrictions = [
+  Restrictions.AtLeastEightCharacters,
+  Restrictions.UppercaseLetters,
+  Restrictions.LowercaseLetters,
+  Restrictions.Numbers,
+  Restrictions.Punctuation
+];
 
-ReactDOM.render(<Hello />, document.getElementById('mount'));
+const passwordForm = <PasswordForm
+  restrictions={restrictions}
+/>;
+
+ReactDOM.render(passwordForm, document.getElementById('mount'));
