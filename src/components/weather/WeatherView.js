@@ -35,7 +35,7 @@ export default class WeatherView extends React.Component {
 
   render() {
     const { city, weather, error } = this.state;
-    return <div>
+    return <div className='ApplicationView'>
       <h1>Current Weather</h1>
       <input type='text'
              focus
