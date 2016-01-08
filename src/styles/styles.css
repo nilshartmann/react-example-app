@@ -1,0 +1,175 @@
+/**
+ * CSS Styles for Password field example
+ *
+ * NOTE: This file doesn't represent CSS best practices ;-). Instead these styles are 'optimized' for the concrete example
+ * only with the goal that inside the example code no or not too many 'layout divs' are needed.
+*/
+
+html,
+button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1.5;
+  color: #CFD8DC;
+  letter-spacing: 0.3px;
+}
+
+html {
+  background-color: #CFD8DC;
+}
+
+button,
+button:focus {
+  border: 0;
+  outline: 0;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+
+  font-size: 18px;
+  border: 0;
+  box-sizing: border-box;
+  color: #727272;
+}
+
+input:focus,
+input:hover {
+  outline: none !important;
+}
+
+h1 {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 500;
+  border-bottom: 1px solid #B6B6B6;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.NavigationBar {
+  padding: 0 0 15px 0;
+  margin: 15px auto;
+  /*height: 50px;*/
+  width: 90%;
+  max-width: 640px;
+  text-align: center;
+
+
+
+  border-bottom: 2px solid #455A64;
+}
+
+.NavigationBar-Item {
+  margin: 0 5px 0 5px;
+  padding: 4px;
+  list-style: none;
+  display: inline;
+  color: #455A64;
+  text-transform: uppercase;
+}
+
+.NavigationBar-Item-Active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.NavigationBar-Item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.ApplicationView {
+  margin: 15px auto;
+  padding: 25px 45px 25px 45px;
+  width: 90%;
+  max-width: 320px;
+  border: 0;
+  background-color: #455A64;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.ApplicationView-chartView {
+  max-width: 640px;
+}
+
+.ButtonBar {
+  margin-top: 10px;
+  padding-top: 20px;
+  border-top: 1px solid #B6B6B6;
+  text-align: right;
+}
+
+.ButtonBar button {
+  margin-left: 10px;
+}
+
+button {
+  box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
+  background-color: #4CAF50;
+  padding: 0 12px;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: 0;
+  border-radius: 2px;
+  text-transform: uppercase;
+  line-height: 2.2;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Likely future */
+}
+
+button:disabled {
+  background-color: #B6B6B6;
+}
+
+button:hover:not(:disabled) {
+  cursor: pointer;
+  background-color: #43A047;
+  transition: box-shadow .25s;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.Label,
+.Label-success {
+  margin-top: 7px;
+  margin-left: 1.4em
+}
+
+.CheckLabel-unchecked,
+.CheckLabel-checked {
+  margin-left: 0.2em;
+}
+
+.CheckLabel-checked,
+.Label-success {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.CheckLabel-unchecked::before {
+  background: url("check_grey.png") no-repeat 0 0;
+}
+
+.CheckLabel-checked::before {
+  background: url("check_green.png") no-repeat 0 0;
+}
+
+.CheckLabel-unchecked::before,
+.CheckLabel-checked::before {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-right: 0.4em;
+  content: "";
+  background-size: 100%;
+}
+
+/* For demonstration virtual dom updates */
+.Red {
+  color: red;
+}
