@@ -17,6 +17,10 @@ Running example
 ---------------
 * You can find a running example here: https://nilshartmann.github.io/react-example-app/
 
+See also
+--------
+
+* If you're using ClosureScript/Reagent: find a ported version of the password field example here: https://github.com/rpreissel/reagent-example-app/
 
 
 
