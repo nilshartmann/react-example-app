@@ -10,7 +10,7 @@ export default class PasswordForm extends React.Component {
   componentDidMount() {
     this.refs.passwordInputField.focus();
   }
-
+  
   onPasswordInputChange(input) {
     this.setState({password: input});
   }
@@ -28,7 +28,7 @@ export default class PasswordForm extends React.Component {
   }
 
   render() {
-    const { password } = this.state;
+    const { password = '' } = this.state;
     const { onPasswordSet } = this.props;
     const checks = this.checkPassword(password);
     const failedChecks = checks.reduce((count, check)=> check.checked ? count : count + 1, 0);
