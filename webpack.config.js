@@ -35,7 +35,7 @@ module.exports = {
         }
       },
 
-      {test: /\.js$/, exclude: /node_modules/, loader: 'eslint'},
+      // {test: /\.js$/, exclude: /node_modules/, loader: 'eslint'},
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.(png|jpg)$/, loader: 'url?limit=25000'}
     ]
