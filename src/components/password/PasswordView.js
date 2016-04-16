@@ -16,7 +16,7 @@ const restrictions = [
   Restrictions.Punctuation
 ];
 
-export default class PasswordApp extends React.Component {
+export default class PasswordView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
