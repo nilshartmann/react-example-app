@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/nilshartmann/react-example-app.svg?branch=master)](https://travis-ci.org/nilshartmann/react-example-app)
+
 React password field example
 ============================
 

@@ -36,7 +36,7 @@ export default class PasswordForm extends React.Component {
 
     return <div>
       <input ref='passwordInputField'
-             type='password'
+             type='text'
              value={password}
              onChange={(event) => this.onPasswordInputChange(event.target.value)}
              placeholder='Password'/>
