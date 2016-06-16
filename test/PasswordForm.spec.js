@@ -22,18 +22,19 @@ describe('PasswordForm', () => {
     const restrictions = [
       {
         label: 'eins', validate(v) {
-        return !!v && v !== 'zzzz' && v.length > 2;
-      }
+          return !!v && v !== 'zzzz' && v.length > 2;
+        }
       },
       {
         label: 'zwei', validate(v) {
-        return !!v && v === 'yyyy' || v === 'zzzz';
-      }
+          return !!v && v === 'yyyy' || v === 'zzzz';
+        }
       }
     ];
 
+    let onPasswordSetCalled = false;
     const onPasswordSet = (password) => {
-
+      onPasswordSetCalled = true;
     };
 
     const tree = TestUtils.renderIntoDocument(
@@ -57,7 +58,7 @@ describe('PasswordForm', () => {
     expect(setPasswordButton.disabled).to.be.true;
 
     const inputField = TestUtils.findRenderedDOMComponentWithTag(tree, 'input');
-    TestUtils.Simulate.change(inputField, {target: {value: 'xxx'}});
+    TestUtils.Simulate.change(inputField, { target: { value: 'xxx' } });
     // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
     //   .to.eql([
     //   {label: 'eins', checked: true},
@@ -73,12 +74,16 @@ describe('PasswordForm', () => {
     // ]);
     expect(setPasswordButton.disabled).to.be.true;
 
-    TestUtils.Simulate.change(inputField, {target: {value: 'yyyy'}});
+    TestUtils.Simulate.change(inputField, { target: { value: 'yyyy' } });
     // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
     //   .to.eql([
     //   {label: 'eins', checked: true},
     //   {label: 'zwei', checked: true}
     // ]);
     expect(setPasswordButton.disabled).to.be.false;
+
+    // Click 'Set Password' Button and make sure callbacked get invoked
+    TestUtils.Simulate.click(setPasswordButton);
+    expect(onPasswordSetCalled).to.be.true;
   });
 });
