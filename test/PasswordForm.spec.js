@@ -13,8 +13,7 @@ import TestUtils from 'react-addons-test-utils';
 import PasswordForm from '../src/components/password/PasswordForm';
 import { CheckLabel } from '../src/components/CoreComponents';
 
-// due to bugs in react TestUtils(?) this does not work with pure function component (CheckLabel)
-describe.skip('PasswordForm', () => {
+describe('PasswordForm', () => {
 
   jsdom();
 
@@ -43,40 +42,43 @@ describe.skip('PasswordForm', () => {
     expect(TestUtils.isCompositeComponentWithType(tree, PasswordForm)).to.be.true;
     const setPasswordButton = TestUtils.findRenderedDOMComponentWithTag(tree, 'button');
     expect(setPasswordButton).to.be.ok;
-    const checkLabelComponents = TestUtils.findAllInRenderedTree(tree, (component) => TestUtils.isCompositeComponentWithType(component, CheckLabel));
-    expect(checkLabelComponents).to.have.length(2);
 
-    // nothing entered yet, so every check should be 'false'
-    expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
-      .to.eql([
-      {label: 'eins', checked: false},
-      {label: 'zwei', checked: false}
-    ]);
+    // does not work with pure function components
+    // const checkLabelComponents = TestUtils.findAllInRenderedTree(tree, (component) => TestUtils.isCompositeComponentWithType(component, CheckLabel));
+    // expect(checkLabelComponents).to.have.length(2);
+
+    // // nothing entered yet, so every check should be 'false'
+    // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
+    //   .to.eql([
+    //   {label: 'eins', checked: false},
+    //   {label: 'zwei', checked: false}
+    // ]);
+
     expect(setPasswordButton.disabled).to.be.true;
 
     const inputField = TestUtils.findRenderedDOMComponentWithTag(tree, 'input');
     TestUtils.Simulate.change(inputField, {target: {value: 'xxx'}});
-    expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
-      .to.eql([
-      {label: 'eins', checked: true},
-      {label: 'zwei', checked: false}
-    ]);
+    // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
+    //   .to.eql([
+    //   {label: 'eins', checked: true},
+    //   {label: 'zwei', checked: false}
+    // ]);
     expect(setPasswordButton.disabled).to.be.true;
 
-    TestUtils.Simulate.change(inputField, {target: {value: 'zzzz'}});
-    expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
-      .to.eql([
-      {label: 'eins', checked: false},
-      {label: 'zwei', checked: true}
-    ]);
+    // TestUtils.Simulate.change(inputField, {target: {value: 'zzzz'}});
+    // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
+    //   .to.eql([
+    //   {label: 'eins', checked: false},
+    //   {label: 'zwei', checked: true}
+    // ]);
     expect(setPasswordButton.disabled).to.be.true;
 
     TestUtils.Simulate.change(inputField, {target: {value: 'yyyy'}});
-    expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
-      .to.eql([
-      {label: 'eins', checked: true},
-      {label: 'zwei', checked: true}
-    ]);
+    // expect(checkLabelComponents.map((c) => ({label: c.props.label, checked: c.props.checked})))
+    //   .to.eql([
+    //   {label: 'eins', checked: true},
+    //   {label: 'zwei', checked: true}
+    // ]);
     expect(setPasswordButton.disabled).to.be.false;
   });
 });
