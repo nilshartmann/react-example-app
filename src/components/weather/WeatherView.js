@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Button} from '../CoreComponents';
 import WeatherPanel from './WeatherPanel';
 
@@ -24,7 +25,7 @@ export default class WeatherView extends React.Component {
   }
 
   fetchWeather() {
-    const { city } = this.state;
+    const {city} = this.state;
     const fetchUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city},de&appid=${API_KEY}&units=metric`;
     fetch(fetchUrl)
       .then(response => response.json())
@@ -34,11 +35,11 @@ export default class WeatherView extends React.Component {
   }
 
   render() {
-    const { city, weather, error } = this.state;
+    const {city, weather, error} = this.state;
     return <div>
       <h1>Current Weather</h1>
       <input type='text'
-             focus
+             ref={ n => n && n.focus()}
              value={city}
              onChange={ (e) => this.setState({city: e.target.value})}
       />
@@ -55,7 +56,7 @@ export default class WeatherView extends React.Component {
 }
 
 WeatherView.propTypes = {
-  initialCity: React.PropTypes.string
+  initialCity: PropTypes.string
 };
 WeatherView.defaultProps = {
   initialCity: 'Hamburg'

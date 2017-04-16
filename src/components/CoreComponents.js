@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // ============================================================================================================
 // ===
@@ -18,8 +19,8 @@ export function CheckLabel({label, checked}) {
 }
 
 CheckLabel.propTypes = {
-  label:   React.PropTypes.string.isRequired,
-  checked: React.PropTypes.bool
+  label:   PropTypes.string.isRequired,
+  checked: PropTypes.bool
 };
 
 // ============================================================================================================
@@ -37,9 +38,9 @@ export function CheckLabelList({checks}) {
   </div>;
 }
 CheckLabelList.propTypes = {
-  checks: React.PropTypes.arrayOf(React.PropTypes.shape({
-    label:   React.PropTypes.string.isRequired,
-    checked: React.PropTypes.bool
+  checks: PropTypes.arrayOf(PropTypes.shape({
+    label:   PropTypes.string.isRequired,
+    checked: PropTypes.bool
   })).isRequired
 };
 
@@ -54,9 +55,9 @@ export function Button({label, enabled, onClickHandler}) {
   </button>;
 }
 Button.propTypes = {
-  label:          React.PropTypes.string.isRequired,
-  enabled:        React.PropTypes.bool,
-  onClickHandler: React.PropTypes.func
+  label:          PropTypes.string.isRequired,
+  enabled:        PropTypes.bool,
+  onClickHandler: PropTypes.func
 };
 
 Button.defaultProps = {
@@ -75,9 +76,9 @@ export function MessageDialog({message, buttonTitle, onOkHandler}) {
   </div>;
 }
 MessageDialog.propTypes = {
-  message:     React.PropTypes.string.isRequired,
-  buttonTitle: React.PropTypes.string.isRequired,
-  onOkHandler: React.PropTypes.func.isRequired
+  message:     PropTypes.string.isRequired,
+  buttonTitle: PropTypes.string.isRequired,
+  onOkHandler: PropTypes.func.isRequired
 };
 
 // ============================================================================================================
@@ -93,10 +94,10 @@ export function NavigationBar({activeViewId, onClickHandler, items}) {
   </ul>;
 }
 NavigationBar.propTypes = {
-  activeViewId:   React.PropTypes.string,
-  onClickHandler: React.PropTypes.func.isRequired,
-  items:          React.PropTypes.arrayOf(React.PropTypes.shape({
-    viewId: React.PropTypes.string.isRequired,
-    label:  React.PropTypes.string.isRequired
+  activeViewId:   PropTypes.string,
+  onClickHandler: PropTypes.func.isRequired,
+  items:          PropTypes.arrayOf(PropTypes.shape({
+    viewId: PropTypes.string.isRequired,
+    label:  PropTypes.string.isRequired
   }))
 };

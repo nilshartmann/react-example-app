@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {CheckLabelList, ButtonBar, Button} from './../CoreComponents';
 
 export default class PasswordForm extends React.Component {
@@ -10,7 +11,7 @@ export default class PasswordForm extends React.Component {
   componentDidMount() {
     this.refs.passwordInputField.focus();
   }
-  
+
   onPasswordInputChange(input) {
     this.setState({password: input});
   }
@@ -55,10 +56,10 @@ export default class PasswordForm extends React.Component {
 }
 
 PasswordForm.propTypes = {
-  restrictions: React.PropTypes.arrayOf(
-    React.PropTypes.shape({
-      label:    React.PropTypes.string.isRequired,
-      validate: React.PropTypes.func.isRequired
+  restrictions:  PropTypes.arrayOf(
+    PropTypes.shape({
+      label:    PropTypes.string.isRequired,
+      validate: PropTypes.func.isRequired
     })).isRequired,
-  onPasswordSet: React.PropTypes.func.isRequired
+  onPasswordSet: PropTypes.func.isRequired
 };

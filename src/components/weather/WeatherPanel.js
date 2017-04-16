@@ -3,6 +3,7 @@
 // ---------------------------------------------------------------------------
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function WeatherPanel({weather}) {
   if (!weather) {
@@ -17,5 +18,5 @@ export default function WeatherPanel({weather}) {
 }
 
 WeatherPanel.propTypes = {
-  weather: React.PropTypes.object
+  weather: PropTypes.object
 };
