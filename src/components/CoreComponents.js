@@ -49,14 +49,16 @@ CheckLabelList.propTypes = {
 // === Button :: Displays a Button that can be enabled or disabled
 // ===
 // ============================================================================================================
-export function Button({label, enabled, onClickHandler}) {
-  return <button disabled={!enabled} onClick={enabled ? onClickHandler : null}>
+export function Button({label, enabled, onClickHandler, small}) {
+  const className = small && "small";
+  return <button disabled={!enabled} className={className} onClick={enabled ? onClickHandler : null}>
     {label}
   </button>;
 }
 Button.propTypes = {
   label:          PropTypes.string.isRequired,
   enabled:        PropTypes.bool,
+  small:          PropTypes.bool,
   onClickHandler: PropTypes.func
 };
 

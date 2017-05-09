@@ -123,6 +123,10 @@ button {
   user-select: none; /* Likely future */
 }
 
+.small {
+  font-size: 14px;
+}
+
 button:disabled {
   background-color: #B6B6B6;
 }

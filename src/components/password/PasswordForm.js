@@ -9,7 +9,14 @@ export default class PasswordForm extends React.Component {
   }
 
   componentDidMount() {
-    this.refs.passwordInputField.focus();
+    this.setFocusToPasswordInput();
+  }
+
+  onClear() {
+    this.setState(
+      { password: ''},
+      () => this.setFocusToPasswordInput()
+    );
   }
 
   onPasswordInputChange(input) {
@@ -28,6 +35,10 @@ export default class PasswordForm extends React.Component {
     return checks;
   }
 
+	setFocusToPasswordInput() {
+    this.passwordInputField && this.passwordInputField.focus();
+  }
+
   render() {
     const { password = '' } = this.state;
     const { onPasswordSet } = this.props;
@@ -36,7 +47,7 @@ export default class PasswordForm extends React.Component {
     const isValidPassword = failedChecks === 0;
 
     return <div>
-      <input ref='passwordInputField'
+      <input ref={ passwordInputField => this.passwordInputField = passwordInputField }
              type='text'
              value={password}
              onChange={(event) => this.onPasswordInputChange(event.target.value)}
@@ -49,6 +60,7 @@ export default class PasswordForm extends React.Component {
       }
 
       <ButtonBar>
+        <Button label='Clear' small={true} enabled={password.length > 0} onClickHandler = { () => this.onClear() }/>
         <Button label='Set Password' enabled={isValidPassword} onClickHandler={ () => onPasswordSet(password) }/>
       </ButtonBar>
     </div>;
