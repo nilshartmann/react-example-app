@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 // ============================================================================================================
 // ===
@@ -14,12 +14,12 @@ import PropTypes from 'prop-types';
 //  }
 //}
 
-export function CheckLabel({label, checked}) {
-  return <div className={ checked ? 'CheckLabel-checked' : 'CheckLabel-unchecked'}>{label}</div>;
+export function CheckLabel({ label, checked }) {
+  return <div className={checked ? "CheckLabel-checked" : "CheckLabel-unchecked"}>{label}</div>;
 }
 
 CheckLabel.propTypes = {
-  label:   PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   checked: PropTypes.bool
 };
 
@@ -29,19 +29,18 @@ CheckLabel.propTypes = {
 // ===
 // === param checks: Array containing objects with label and checked property
 // ============================================================================================================
-export function CheckLabelList({checks}) {
-  return <div className='CheckLabelList'>
-    {checks.map((c) => <CheckLabel key={c.label}
-                                   label={c.label}
-                                   checked={c.checked}/>
-    )}
-  </div>;
+export function CheckLabelList({ checks }) {
+  return (
+    <div className="CheckLabelList">{checks.map(c => <CheckLabel key={c.label} label={c.label} checked={c.checked} />)}</div>
+  );
 }
 CheckLabelList.propTypes = {
-  checks: PropTypes.arrayOf(PropTypes.shape({
-    label:   PropTypes.string.isRequired,
-    checked: PropTypes.bool
-  })).isRequired
+  checks: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      checked: PropTypes.bool
+    })
+  ).isRequired
 };
 
 // ============================================================================================================
@@ -49,16 +48,18 @@ CheckLabelList.propTypes = {
 // === Button :: Displays a Button that can be enabled or disabled
 // ===
 // ============================================================================================================
-export function Button({label, enabled, onClickHandler, small}) {
+export function Button({ label, enabled, onClickHandler, small }) {
   const className = small && "small";
-  return <button disabled={!enabled} className={className} onClick={enabled ? onClickHandler : null}>
-    {label}
-  </button>;
+  return (
+    <button disabled={!enabled} className={className} onClick={enabled ? onClickHandler : null}>
+      {label}
+    </button>
+  );
 }
 Button.propTypes = {
-  label:          PropTypes.string.isRequired,
-  enabled:        PropTypes.bool,
-  small:          PropTypes.bool,
+  label: PropTypes.string.isRequired,
+  enabled: PropTypes.bool,
+  small: PropTypes.bool,
   onClickHandler: PropTypes.func
 };
 
@@ -66,19 +67,22 @@ Button.defaultProps = {
   enabled: true
 };
 
-export function ButtonBar({children}) {
-  return <div className='ButtonBar'>{children}</div>;
+export function ButtonBar({ children }) {
+  return <div className="ButtonBar">{children}</div>;
 }
 
-export function MessageDialog({message, buttonTitle, onOkHandler}) {
-  return <div>{message}
-    <ButtonBar>
-      <Button label={buttonTitle} onClickHandler={onOkHandler}/>
-    </ButtonBar>
-  </div>;
+export function MessageDialog({ message, buttonTitle, onOkHandler }) {
+  return (
+    <div>
+      {message}
+      <ButtonBar>
+        <Button label={buttonTitle} onClickHandler={onOkHandler} />
+      </ButtonBar>
+    </div>
+  );
 }
 MessageDialog.propTypes = {
-  message:     PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
   buttonTitle: PropTypes.string.isRequired,
   onOkHandler: PropTypes.func.isRequired
 };
@@ -88,18 +92,28 @@ MessageDialog.propTypes = {
 // === NavigationBar :: Displays a simple Navigation Bar with given items
 // ===
 // ============================================================================================================
-export function NavigationBar({activeViewId, onClickHandler, items}) {
-  return <ul className='NavigationBar'>
-    {items.map((item) => <li key={item.viewId}
-                             onClick={() => onClickHandler(item.viewId)}
-                             className={item.viewId === activeViewId ? 'NavigationBar-Item NavigationBar-Item-Active' : 'NavigationBar-Item'}>{item.label}</li>)}
-  </ul>;
+export function NavigationBar({ activeViewId, onClickHandler, items }) {
+  return (
+    <ul className="NavigationBar">
+      {items.map(item => (
+        <li
+          key={item.viewId}
+          onClick={() => onClickHandler(item.viewId)}
+          className={item.viewId === activeViewId ? "NavigationBar-Item NavigationBar-Item-Active" : "NavigationBar-Item"}
+        >
+          {item.label}
+        </li>
+      ))}
+    </ul>
+  );
 }
 NavigationBar.propTypes = {
-  activeViewId:   PropTypes.string,
+  activeViewId: PropTypes.string,
   onClickHandler: PropTypes.func.isRequired,
-  items:          PropTypes.arrayOf(PropTypes.shape({
-    viewId: PropTypes.string.isRequired,
-    label:  PropTypes.string.isRequired
-  }))
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      viewId: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired
+    })
+  )
 };

@@ -1,8 +1,7 @@
-import './styles/styles.css';
+import "./styles/styles.css";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Application from './components/Application';
+import React from "react";
+import ReactDOM from "react-dom";
+import Application from "./components/Application";
 
-
-ReactDOM.render(<Application />, document.getElementById('mount'));
+ReactDOM.render(<Application />, document.getElementById("mount"));

@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 
-import {NavigationBar} from './CoreComponents';
+import { NavigationBar } from "./CoreComponents";
 
-import PasswordView from './password/PasswordView';
-import WeatherView from './weather/WeatherView';
-import ChartView from './chart/ChartView';
+import PasswordView from "./password/PasswordView";
+import WeatherView from "./weather/WeatherView";
+import ChartView from "./chart/ChartView";
 
 export default class Application extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      currentViewId: 'passwordView'
+      currentViewId: "passwordView"
     };
   }
 
   onViewSelected(currentViewId) {
-    this.setState({currentViewId});
+    this.setState({ currentViewId });
   }
 
   renderApplicationView(currentViewId) {
@@ -25,11 +25,11 @@ export default class Application extends React.Component {
     }
 
     switch (currentViewId) {
-      case 'passwordView':
+      case "passwordView":
         return <PasswordView />;
-      case 'weatherView':
+      case "weatherView":
         return <WeatherView />;
-      case 'chartView':
+      case "chartView":
         return <ChartView />;
       default:
     }
@@ -42,20 +42,20 @@ export default class Application extends React.Component {
 
     const applicationViewClassNames = `ApplicationView ApplicationView-${currentViewId}`;
 
-    return <div>
-      <NavigationBar
-        activeViewId={currentViewId}
-        onClickHandler={ (selectedViewId) => this.onViewSelected(selectedViewId) }
-        items={[
-        {label: 'Password Form', viewId: 'passwordView' },
-        {label: 'Weather Report', viewId: 'weatherView' },
-        {label: 'Chart Example', viewId: 'chartView' }
-        ]}
-      />
+    return (
+      <div>
+        <NavigationBar
+          activeViewId={currentViewId}
+          onClickHandler={selectedViewId => this.onViewSelected(selectedViewId)}
+          items={[
+            { label: "Password Form", viewId: "passwordView" },
+            { label: "Weather Report", viewId: "weatherView" },
+            { label: "Chart Example", viewId: "chartView" }
+          ]}
+        />
 
-      <div className={applicationViewClassNames}>
-        { this.renderApplicationView(currentViewId) }
+        <div className={applicationViewClassNames}>{this.renderApplicationView(currentViewId)}</div>
       </div>
-    </div>;
+    );
   }
 }
