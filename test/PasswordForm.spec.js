@@ -39,7 +39,7 @@ describe("PasswordForm", () => {
 
     const tree = TestUtils.renderIntoDocument(<PasswordForm restrictions={restrictions} onPasswordSet={onPasswordSet} />);
     expect(TestUtils.isCompositeComponentWithType(tree, PasswordForm)).to.be.true;
-    const setPasswordButton = TestUtils.findRenderedDOMComponentWithTag(tree, "button");
+    const setPasswordButton = TestUtils.scryRenderedDOMComponentsWithTag(tree, "button")[1];
     expect(setPasswordButton).to.be.ok;
 
     // does not work with pure function components
