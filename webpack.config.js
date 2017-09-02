@@ -1,25 +1,11 @@
-var path = require("path");
-var webpack = require("webpack");
-var argv = require("yargs").argv;
-const makeDist = argv.dist;
-const mainJs = path.resolve(__dirname, "src/app.js");
-const entries = makeDist ? mainJs : ["webpack-dev-server/client?http://localhost:8080", "webpack/hot/dev-server", mainJs];
-const plugins = makeDist
-  ? null
-  : [
-      // Enable Hot Module Replacement
-      new webpack.HotModuleReplacementPlugin(),
-
-      // Avoid publishing files when compilation failed
-      new webpack.NoErrorsPlugin()
-    ];
+const path = require("path");
 
 module.exports = {
   resolve: {
-    extensions: ["", ".js", ".jsx"]
+    extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
 
-  entry: entries,
+  entry: "./src/app.js",
   output: {
     // output path
     path: path.resolve(__dirname, "public/dist"),
@@ -27,24 +13,38 @@ module.exports = {
     filename: "dist.js"
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: ["babel"],
-        query: {
-          presets: ["es2015", "stage-0", "react"]
+        use: "babel-loader"
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          }
+        ]
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: "url-loader",
+        options: {
+          limit: 25000
         }
       },
-
-      // {test: /\.js$/, exclude: /node_modules/, loader: 'eslint'},
-      { test: /\.css$/, loader: "style!css" },
-      { test: /\.(png|jpg)$/, loader: "url?limit=25000" }
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: "file-loader",
+        options: {
+          name: "public/fonts/[name].[ext]"
+        }
+      }
     ]
-  },
-  plugins: plugins,
-  stats: {
-    colors: true
   },
   devtool: "source-map"
 };
