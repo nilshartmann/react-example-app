@@ -7,15 +7,11 @@
     "dist": "webpack --dist",
     "test": "mocha test --compilers js:babel-register --recursive",
     "test:watch": "npm test -- --watch",
-    "devserver":
-      "webpack-dev-server --progress --colors --hot --content-base public",
-    "start":
-      "webpack-dev-server --progress --colors --hot --content-base public",
-    "prettier":
-      "prettier --print-width 130 --write \"{src,text}/**/*.{js,jsx,ts,tsx,json}\""
+    "devserver": "webpack-dev-server --progress --colors --hot --content-base public",
+    "start": "webpack-dev-server --progress --colors --hot --content-base public",
+    "prettier": "prettier --write --print-width 130 \"**/{*.js,*.css,*.json}\""
   },
-  "repository":
-    "https://github.com/nilshartmann/react-passwordfield-example.git",
+  "repository": "https://github.com/nilshartmann/react-passwordfield-example.git",
   "author": "Nils Hartmann",
   "license": "ISC",
   "dependencies": {

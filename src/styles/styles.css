@@ -7,16 +7,16 @@
 
 html,
 button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: normal;
   line-height: 1.5;
-  color: #CFD8DC;
+  color: #cfd8dc;
   letter-spacing: 0.3px;
 }
 
 html {
-  background-color: #CFD8DC;
+  background-color: #cfd8dc;
 }
 
 button,
@@ -45,7 +45,7 @@ h1 {
   font-size: 22px;
   line-height: 1.2;
   font-weight: 500;
-  border-bottom: 1px solid #B6B6B6;
+  border-bottom: 1px solid #b6b6b6;
   padding-bottom: 5px;
   margin-bottom: 20px;
 }
@@ -58,9 +58,7 @@ h1 {
   max-width: 640px;
   text-align: center;
 
-
-
-  border-bottom: 2px solid #455A64;
+  border-bottom: 2px solid #455a64;
 }
 
 .NavigationBar-Item {
@@ -68,7 +66,7 @@ h1 {
   padding: 4px;
   list-style: none;
   display: inline;
-  color: #455A64;
+  color: #455a64;
   text-transform: uppercase;
 }
 
@@ -88,7 +86,7 @@ h1 {
   width: 90%;
   max-width: 320px;
   border: 0;
-  background-color: #455A64;
+  background-color: #455a64;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -99,7 +97,7 @@ h1 {
 .ButtonBar {
   margin-top: 10px;
   padding-top: 20px;
-  border-top: 1px solid #B6B6B6;
+  border-top: 1px solid #b6b6b6;
   text-align: right;
 }
 
@@ -108,8 +106,8 @@ h1 {
 }
 
 button {
-  box-shadow: 0 0 2px rgba(0, 0, 0, .12), 0 2px 4px rgba(0, 0, 0, .24);
-  background-color: #4CAF50;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  background-color: #4caf50;
   padding: 0 12px;
   display: inline-block;
   margin-left: auto;
@@ -128,20 +126,20 @@ button {
 }
 
 button:disabled {
-  background-color: #B6B6B6;
+  background-color: #b6b6b6;
 }
 
 button:hover:not(:disabled) {
   cursor: pointer;
-  background-color: #43A047;
-  transition: box-shadow .25s;
+  background-color: #43a047;
+  transition: box-shadow 0.25s;
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 }
 
 .Label,
 .Label-success {
   margin-top: 7px;
-  margin-left: 1.4em
+  margin-left: 1.4em;
 }
 
 .CheckLabel-unchecked,
@@ -152,7 +150,7 @@ button:hover:not(:disabled) {
 .CheckLabel-checked,
 .Label-success {
   font-weight: bold;
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .CheckLabel-unchecked::before {
