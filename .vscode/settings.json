@@ -2,5 +2,6 @@
   // Place your settings in this file to overwrite default and user settings.
   // Controls visibility of the glyph margin
   "editor.glyphMargin": true,
-  "prettier.printWidth": 130
+  "prettier.printWidth": 130,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

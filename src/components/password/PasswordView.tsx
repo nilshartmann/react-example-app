@@ -2,7 +2,7 @@
 // --- Nils Hartmann | http://nilshartmann.net                             ---
 // ---------------------------------------------------------------------------
 
-import React from "react";
+import * as React from "react";
 import { MessageDialog } from "./../CoreComponents";
 import PasswordForm from "./PasswordForm";
 
@@ -16,13 +16,17 @@ const restrictions = [
   Restrictions.Punctuation
 ];
 
-export default class PasswordView extends React.Component {
-  constructor(props) {
-    super(props);
+type PasswordViewState = {
+  password?: string | null;
+};
+
+export default class PasswordView extends React.Component<{}, PasswordViewState> {
+  constructor() {
+    super();
     this.state = {};
   }
 
-  setPassword(newPassword) {
+  setPassword(newPassword: string | null) {
     this.setState({ password: newPassword });
   }
 
@@ -33,7 +37,7 @@ export default class PasswordView extends React.Component {
       return (
         <div>
           <h1>Step 1: Choose new password</h1>
-          <PasswordForm restrictions={restrictions} onPasswordSet={newPassword => this.setPassword(newPassword)} />
+          <PasswordForm restrictions={restrictions} onPasswordSet={(newPassword: string) => this.setPassword(newPassword)} /> */}
         </div>
       );
     } else {

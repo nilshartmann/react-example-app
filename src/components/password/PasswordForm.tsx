@@ -1,11 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
+import { Restriction } from "../../model/Restrictions";
 import { CheckLabelList, ButtonBar, Button } from "./../CoreComponents";
 
-export default class PasswordForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+type PasswordFormProps = {
+  restrictions: Restriction[];
+  onPasswordSet: (password: string) => void;
+};
+
+type PasswordFormState = {
+  password: string;
+};
+
+export default class PasswordForm extends React.Component<PasswordFormProps, PasswordFormState> {
+  passwordInputField?: HTMLInputElement | null;
+
+  constructor() {
+    super();
+    this.state = {
+      password: ""
+    };
   }
 
   componentDidMount() {
@@ -16,11 +29,11 @@ export default class PasswordForm extends React.Component {
     this.setState({ password: "" }, () => this.setFocusToPasswordInput());
   }
 
-  onPasswordInputChange(input) {
+  onPasswordInputChange(input: string) {
     this.setState({ password: input });
   }
 
-  checkPassword(password) {
+  checkPassword(password: string) {
     const { restrictions } = this.props;
 
     // check each restriction
@@ -37,7 +50,7 @@ export default class PasswordForm extends React.Component {
   }
 
   render() {
-    const { password = "" } = this.state;
+    const { password } = this.state;
     const { onPasswordSet } = this.props;
     const checks = this.checkPassword(password);
     const failedChecks = checks.reduce((count, check) => (check.checked ? count : count + 1), 0);
@@ -67,13 +80,3 @@ export default class PasswordForm extends React.Component {
     );
   }
 }
-
-PasswordForm.propTypes = {
-  restrictions: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      validate: PropTypes.func.isRequired
-    })
-  ).isRequired,
-  onPasswordSet: PropTypes.func.isRequired
-};

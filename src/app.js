@@ -1,7 +1,12 @@
 import "./styles/styles.css";
 
-import React from "react";
-import ReactDOM from "react-dom";
-import Application from "./components/Application";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import PasswordView from "./components/password/PasswordView";
 
-ReactDOM.render(<Application />, document.getElementById("mount"));
+ReactDOM.render(
+  <div className="ApplicationView">
+    <PasswordView />
+  </div>,
+  document.getElementById("mount")
+);
