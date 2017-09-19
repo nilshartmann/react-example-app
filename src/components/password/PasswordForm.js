@@ -2,6 +2,9 @@ import * as React from "react";
 import * as PropTypes from "prop-types";
 import { CheckLabelList, ButtonBar, Button } from "./../CoreComponents";
 
+/**
+ * @augments {React.Component<{ restrictions: any, onPasswordSet: any }, {}>}
+ */
 export default class PasswordForm extends React.Component {
   constructor() {
     super();

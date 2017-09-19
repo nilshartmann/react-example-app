@@ -20,7 +20,7 @@
     "awesome-typescript-loader": "^3.2.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "typescript": "2.4"
+    "typescript": "^2.5.2"
   },
   "devDependencies": {
     "css-loader": "0.23.1",
