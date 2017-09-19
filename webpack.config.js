@@ -5,7 +5,7 @@ module.exports = {
     extensions: [".js", ".jsx", ".ts", ".tsx"]
   },
 
-  entry: "./src/app.js",
+  entry: "./src/app.tsx",
   output: {
     // output path
     path: path.resolve(__dirname, "public/dist"),
