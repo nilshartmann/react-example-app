@@ -32,12 +32,19 @@ export default class PasswordView extends React.Component<{}, PasswordViewState>
 
   render() {
     const { password } = this.state;
+    // workaround when accessing components written in javascript from typescript
+    // https://github.com/Microsoft/TypeScript/issues/17104#issuecomment-324884111
+    // Root cause: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18606
+    const p = {
+      restrictions,
+      onPasswordSet: (newPassword: string) => this.setPassword(newPassword)
+    };
 
     if (!password) {
       return (
         <div>
           <h1>Step 1: Choose new password</h1>
-          <PasswordForm restrictions={restrictions} onPasswordSet={(newPassword: string) => this.setPassword(newPassword)} />
+          <PasswordForm {...p} />
         </div>
       );
     } else {
